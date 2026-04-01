@@ -35,7 +35,7 @@
         nav {
             background-color: var(--white);
             border-bottom: 2px solid var(--gray);
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -53,14 +53,34 @@
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
             cursor: pointer;
         }
 
         .logo-img {
-            height: 90px;
+            height: 120px;
             width: auto;
             object-fit: contain;
+        }
+
+        .org-name {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .org-name-main {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.3px;
+        }
+
+        .org-name-sub {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
         }
 
         .nav-links {
@@ -73,7 +93,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 16px;
             color: var(--text-dark);
             font-weight: 500;
             transition: all 0.3s ease;
@@ -649,6 +669,10 @@
         <div class="navbar-container">
             <div class="logo-section" onclick="showPage('home')">
                 <img src="logo-nuevo-v2.jpg" alt="AMETA Logo" class="logo-img">
+                <div class="org-name">
+                    <div class="org-name-main">A.M.E.T.A.</div>
+                    <div class="org-name-sub">Asociación Mutual de Empleados<br>y Trabajadores de la Aviación</div>
+                </div>
             </div>
             <div class="nav-links" id="navLinks">
                 <button onclick="showPage('home')">Inicio</button>
