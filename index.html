@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMETA - Asociación Mutual de Empleados y Trabajadores de la Aviación</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -95,10 +95,12 @@
             cursor: pointer;
             font-size: 16px;
             color: var(--text-dark);
-            font-weight: 500;
+            font-weight: 400;
+            letter-spacing: 0.2px;
             transition: all 0.3s ease;
             position: relative;
             padding-bottom: 4px;
+            font-family: 'Poppins', sans-serif;
         }
 
         .nav-links button:hover {
@@ -736,9 +738,9 @@
             </div>
 
             <div class="special-box">
-                <h3>En conjunto con OSPADEP</h3>
+                <h3>Conocé la obra social de la actividad</h3>
                 <p>AMETA opera en sinergia con OSPADEP, la obra social especializada en empleados públicos y privados del sector aeronáutico, brindando cobertura integral en salud.</p>
-                <a href="https://ospadep.com" target="_blank" class="btn-link">Visitar OSPADEP</a>
+                <button class="btn-link" onclick="window.open('https://ospadep.com', '_blank')">Visitar OSPADEP</button>
             </div>
         </div>
 
@@ -785,16 +787,16 @@
             <div class="services-dashboard" id="dashboardServices"></div>
 
             <div class="special-box">
-                <p>¿Necesitás ayuda? Contactanos o visitá nuestra página de OSPADEP</p>
-                <a href="https://ospadep.com" target="_blank" class="btn-link">OSPADEP - Obra Social</a>
+                <p>¿Necesitás ayuda? Contactanos o conocé la obra social de la actividad</p>
+                <button class="btn-link" onclick="window.open('https://ospadep.com', '_blank')">OSPADEP - Obra Social</button>
             </div>
         </div>
     </div>
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2024 AMETA - Asociación Mutual de Empleados y Trabajadores de la Aviación</p>
-        <p>Venezuela 900, CABA | (011) 4331-1411 | En conjunto con <a href="https://ospadep.com">OSPADEP</a></p>
+        <p>© 2026 AMETA - Asociación Mutual de Empleados y Trabajadores de la Aviación</p>
+        <p>Venezuela 900, CABA | (011) 4331-1411 | Conocé nuestra obra social <button style="background: none; border: none; color: var(--navy); cursor: pointer; font-weight: 600; text-decoration: underline; padding: 0; margin-left: 0.25rem;" onclick="window.open('https://ospadep.com', '_blank')">OSPADEP</button></p>
     </footer>
 
     <script>
