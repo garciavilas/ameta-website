@@ -64,13 +64,19 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0rem;
             cursor: pointer;
             font-weight: 700;
-            font-size: 28px;
+            font-size: 0px;
             color: #fff;
             font-family: 'Poppins', sans-serif;
             letter-spacing: -0.5px;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
         }
 
         .logo-icon {
@@ -730,48 +736,9 @@
     <nav>
         <div class="navbar-container">
             <div class="logo" onclick="showPage('home')">
-                <svg class="logo-icon" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="gradAzul" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#0d47a1;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#1e88e5;stop-opacity:1" />
-                    </linearGradient>
-                    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#00bcd4;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#0097a7;stop-opacity:1" />
-                    </linearGradient>
-                  </defs>
-                  <g id="tower">
-                    <rect x="30" y="40" width="20" height="50" fill="url(#gradAzul)" rx="3" stroke="url(#gradCyan)" stroke-width="1"/>
-                    <circle cx="40" cy="35" r="12" fill="url(#gradCyan)" stroke="url(#gradAzul)" stroke-width="1.5"/>
-                    <circle cx="40" cy="35" r="4" fill="#ffd700" opacity="0.9"/>
-                  </g>
-                  <g id="airplane" transform="translate(90, 50) rotate(-15)">
-                    <ellipse cx="0" cy="0" rx="28" ry="10" fill="url(#gradCyan)" stroke="url(#gradAzul)" stroke-width="1"/>
-                    <circle cx="-8" cy="-2" r="6" fill="url(#gradAzul)" stroke="#ffd700" stroke-width="1"/>
-                    <circle cx="-8" cy="-2" r="3" fill="#ffd700" opacity="0.8"/>
-                    <ellipse cx="0" cy="2" rx="45" ry="7" fill="url(#gradCyan)" opacity="0.9" stroke="url(#gradAzul)" stroke-width="0.5"/>
-                    <path d="M -45 2 Q -50 0 -48 5" fill="url(#gradAzul)" stroke="url(#gradCyan)" stroke-width="0.5"/>
-                    <path d="M 45 2 Q 50 0 48 5" fill="url(#gradAzul)" stroke="url(#gradCyan)" stroke-width="0.5"/>
-                    <polygon points="32,-2 42,-8 42,8" fill="url(#gradAzul)" stroke="url(#gradCyan)" stroke-width="0.5"/>
-                    <line x1="-8" y1="10" x2="-8" y2="16" stroke="url(#gradAzul)" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="8" y1="10" x2="8" y2="16" stroke="url(#gradAzul)" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="-8" cy="16" r="2.5" fill="#333" opacity="0.7"/>
-                    <circle cx="8" cy="16" r="2.5" fill="#333" opacity="0.7"/>
-                  </g>
-                  <g id="runway">
-                    <rect x="25" y="130" width="130" height="18" fill="url(#gradAzul)" rx="9" stroke="url(#gradCyan)" stroke-width="1" opacity="0.95"/>
-                    <rect x="30" y="140" width="4" height="8" fill="#ffd700" opacity="0.8" rx="1"/>
-                    <rect x="52" y="140" width="4" height="8" fill="#ffd700" opacity="0.8" rx="1"/>
-                    <rect x="74" y="140" width="4" height="8" fill="#ffd700" opacity="0.8" rx="1"/>
-                    <rect x="96" y="140" width="4" height="8" fill="#ffd700" opacity="0.8" rx="1"/>
-                    <rect x="118" y="140" width="4" height="8" fill="#ffd700" opacity="0.8" rx="1"/>
-                    <rect x="140" y="140" width="4" height="8" fill="#ffd700" opacity="0.8" rx="1"/>
-                    <line x1="25" y1="130" x2="155" y2="130" stroke="url(#gradCyan)" stroke-width="1" opacity="0.6"/>
-                    <line x1="25" y1="148" x2="155" y2="148" stroke="url(#gradCyan)" stroke-width="1" opacity="0.6"/>
-                  </g>
-                  <circle cx="90" cy="90" r="85" fill="none" stroke="url(#gradCyan)" stroke-width="0.5" opacity="0.15"/>
-                </svg>
+                <div class="logo" onclick="showPage('home')">
+                    <img src="logo.jpg" alt="AMETA Logo" style="height: 80px; width: auto;">
+                </div>
                 <div>AMETA</div>
             </div>
             <div class="nav-links" id="navLinks">
