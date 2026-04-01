@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMETA - Asociación Mutual de Empleados y Trabajadores de la Aviación</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,94 +13,59 @@
         }
 
         :root {
-            --primary: #0d47a1;
-            --primary-light: #1e88e5;
-            --primary-dark: #0c3f91;
-            --accent: #00bcd4;
-            --accent-light: #26c6da;
+            --navy: #0d47a1;
+            --navy-light: #1e88e5;
+            --cyan: #00bcd4;
             --gold: #ffd700;
-            --text-primary: #0f1419;
-            --text-secondary: #555;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f5f7fa;
-            --border-color: #e8eef5;
-        }
-
-        body.dark-mode {
-            --text-primary: #e8eef5;
-            --text-secondary: #aaa;
-            --bg-primary: #1a2a4a;
-            --bg-secondary: #0f1419;
-            --border-color: #2a3a5a;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #e8eef5;
+            --text-dark: #0f1419;
+            --text-light: #666;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--bg-secondary);
-            color: var(--text-primary);
+            background-color: var(--gray-light);
+            color: var(--text-dark);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
+        /* NAVBAR */
         nav {
-            background: linear-gradient(90deg, #ffffff 0%, #f5f7fa 20%, #0d47a1 100%);
-            padding: 0.8rem 1rem;
+            background-color: var(--white);
+            border-bottom: 2px solid var(--gray);
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(13, 71, 161, 0.1);
-            box-shadow: 0 2px 8px rgba(13, 71, 161, 0.08);
+            box-shadow: 0 1px 3px rgba(13, 71, 161, 0.05);
         }
 
         .navbar-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
+        .logo-section {
             display: flex;
             align-items: center;
-            gap: 0rem;
+            gap: 1rem;
             cursor: pointer;
-            font-weight: 700;
-            font-size: 0px;
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-            letter-spacing: -0.5px;
         }
 
-        .logo img {
-            height: 80px;
+        .logo-img {
+            height: 90px;
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-            padding: 4px;
-        }
-
-        .logo-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 0px;
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            box-shadow: none;
-        }
-
-        .logo-icon svg {
-            width: 100%;
-            height: 100%;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
@@ -108,229 +73,67 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 14px;
-            color: #0d47a1;
+            font-size: 15px;
+            color: var(--text-dark);
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
+            padding-bottom: 4px;
         }
 
         .nav-links button:hover {
-            color: #0d47a1;
+            color: var(--navy);
         }
 
         .nav-links button::after {
             content: '';
             position: absolute;
-            bottom: -6px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
-            background: var(--accent);
+            height: 3px;
+            background: var(--gold);
             transition: width 0.3s ease;
+            border-radius: 2px;
         }
 
         .nav-links button:hover::after {
             width: 100%;
         }
 
-        .btn-login {
-            padding: 0.65rem 1.5rem;
-            background-color: var(--primary);
-            color: #fff;
+        .btn-access {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(13, 71, 161, 0.2);
+        }
+
+        .btn-access:hover {
+            transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(13, 71, 161, 0.3);
         }
 
-        .btn-login:hover {
-            transform: translateY(-2px);
-            background-color: var(--primary-light);
-            box-shadow: 0 6px 16px rgba(13, 71, 161, 0.4);
-        }
-
+        /* CONTAINER */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 3rem 1.5rem;
+            padding: 0 2rem;
         }
 
-        .hero {
-            text-align: center;
-            margin-bottom: 5rem;
-            background: linear-gradient(135deg, rgba(13, 71, 161, 0.05) 0%, rgba(0, 188, 212, 0.05) 100%);
-            padding: 3rem 2rem;
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: url('https://images.unsplash.com/photo-1436262174933-eb643981ffd4?w=600&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.18;
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        .hero > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 400;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(13, 71, 161, 0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.3);
-        }
-
-        .btn-secondary {
-            padding: 1rem 2.5rem;
-            background-color: var(--bg-primary);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary);
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .service-card {
-            padding: 2rem;
-            background-color: var(--bg-primary);
-            border-radius: 14px;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover {
-            border-color: var(--primary-light);
-            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.12);
-            transform: translateY(-4px);
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--primary);
-            font-family: 'Poppins', sans-serif;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .service-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 2px;
-            background: var(--gold);
-            border-radius: 1px;
-            opacity: 0.7;
-        }
-
-        .service-card p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
+        /* PAGES */
         .page {
             display: none;
+            animation: fadeIn 0.4s ease;
         }
 
         .page.active {
             display: block;
-            animation: fadeIn 0.3s ease;
         }
 
         @keyframes fadeIn {
@@ -344,33 +147,182 @@
             }
         }
 
+        /* HERO */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(13, 71, 161, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(13, 71, 161, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background-color: var(--white);
+            border: 2px solid var(--navy);
+            color: var(--navy);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--navy);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* SERVICES GRID */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--gray);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--navy) 0%, var(--cyan) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--navy-light);
+            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .service-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            opacity: 0.8;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* TITLES */
         h1 {
             font-size: 42px;
             font-weight: 700;
             margin-bottom: 2.5rem;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--navy);
         }
 
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        /* INFO BOX */
         .info-box {
-            background-color: var(--bg-primary);
+            background-color: var(--white);
             padding: 2.5rem;
-            border-radius: 14px;
-            border-left: 4px solid var(--accent);
-            line-height: 1.8;
+            border-radius: 10px;
+            border-left: 4px solid var(--cyan);
             margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.08);
+            line-height: 1.8;
         }
 
         .info-box p {
             margin-bottom: 1.5rem;
             font-size: 16px;
-            color: var(--text-primary);
+            color: var(--text-dark);
         }
 
+        /* GRID */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -378,98 +330,91 @@
             margin-bottom: 3rem;
         }
 
-        .contact-card {
-            background-color: var(--bg-primary);
+        .card {
+            background-color: var(--white);
             padding: 2rem;
-            border-radius: 14px;
-            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            border: 1px solid var(--gray);
             transition: all 0.3s ease;
         }
 
-        .contact-card:hover {
-            border-color: var(--primary-light);
+        .card:hover {
+            border-color: var(--navy-light);
             box-shadow: 0 8px 24px rgba(13, 71, 161, 0.12);
             transform: translateY(-4px);
         }
 
-        .contact-card h3 {
-            font-size: 18px;
-            font-weight: 600;
+        .card h3 {
+            color: var(--navy);
             margin-bottom: 1rem;
-            color: var(--primary);
-            font-family: 'Poppins', sans-serif;
         }
 
-        .contact-card p {
+        .card p {
+            color: var(--text-light);
             font-size: 15px;
-            color: var(--text-secondary);
         }
 
-        .ospadep-box {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(30, 136, 229, 0.05) 100%);
+        /* SPECIAL BOX */
+        .special-box {
+            background: linear-gradient(135deg, var(--white) 0%, rgba(0, 188, 212, 0.03) 100%);
             padding: 2.5rem;
-            border-radius: 14px;
-            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            border: 1px solid var(--gray);
             margin-top: 3rem;
-            box-shadow: 0 4px 16px rgba(30, 136, 229, 0.1);
+            box-shadow: 0 4px 16px rgba(30, 136, 229, 0.08);
         }
 
-        .ospadep-box h3 {
-            font-size: 20px;
-            font-weight: 600;
+        .special-box h3 {
+            color: var(--navy);
             margin-bottom: 1rem;
-            color: var(--primary);
-            font-family: 'Poppins', sans-serif;
         }
 
-        .ospadep-box p {
-            font-size: 15px;
-            color: var(--text-secondary);
+        .special-box p {
+            color: var(--text-light);
             margin-bottom: 1.5rem;
             line-height: 1.8;
         }
 
-        .btn-ospadep {
+        .btn-link {
             padding: 0.75rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: #fff;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
             border: none;
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(13, 71, 161, 0.2);
+            box-shadow: 0 2px 8px rgba(13, 71, 161, 0.2);
         }
 
-        .btn-ospadep:hover {
+        .btn-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(13, 71, 161, 0.3);
+            box-shadow: 0 4px 12px rgba(13, 71, 161, 0.3);
         }
 
+        /* LOGIN */
         .login-container {
             max-width: 420px;
             margin: 2rem auto;
         }
 
         .login-box {
-            background-color: var(--bg-primary);
+            background-color: var(--white);
             padding: 2.5rem;
-            border-radius: 14px;
-            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            border: 1px solid var(--gray);
             margin-bottom: 2rem;
-            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.1);
+            box-shadow: 0 4px 16px rgba(13, 71, 161, 0.1);
         }
 
         .login-box h2 {
             font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 2rem;
             text-align: center;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -484,105 +429,97 @@
             font-size: 14px;
             font-weight: 500;
             margin-bottom: 0.75rem;
-            color: var(--text-primary);
+            color: var(--text-dark);
         }
 
         .form-group input {
             width: 100%;
             padding: 0.875rem;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border: 1px solid var(--gray);
+            border-radius: 6px;
             font-size: 14px;
-            background-color: var(--bg-secondary);
-            color: var(--text-primary);
+            background-color: var(--gray-light);
+            color: var(--text-dark);
             transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: var(--primary-light);
+            border-color: var(--navy-light);
             box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
-            background-color: var(--bg-primary);
+            background-color: var(--white);
         }
 
         .btn-submit {
             width: 100%;
             padding: 0.875rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: #fff;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
             border: none;
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(13, 71, 161, 0.2);
+            box-shadow: 0 2px 8px rgba(13, 71, 161, 0.2);
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(13, 71, 161, 0.3);
+            box-shadow: 0 4px 12px rgba(13, 71, 161, 0.3);
         }
 
         .login-toggle {
             text-align: center;
             margin-bottom: 2rem;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--gray);
             padding-top: 1rem;
         }
 
         .login-toggle p {
             font-size: 14px;
-            color: var(--text-secondary);
+            color: var(--text-light);
             margin-bottom: 0.5rem;
         }
 
         .login-toggle button {
             background: none;
             border: none;
-            color: var(--primary-light);
+            color: var(--navy-light);
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
             text-decoration: underline;
-            transition: opacity 0.3s;
-        }
-
-        .login-toggle button:hover {
-            opacity: 0.8;
         }
 
         .affiliation-box {
-            background: linear-gradient(135deg, var(--accent) 0%, #0097a7 100%);
+            background: linear-gradient(135deg, var(--cyan) 0%, #0097a7 100%);
             padding: 2.5rem;
-            border-radius: 14px;
+            border-radius: 10px;
             text-align: center;
-            color: #fff;
-            box-shadow: 0 8px 24px rgba(0, 188, 212, 0.2);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(0, 188, 212, 0.2);
         }
 
         .affiliation-box h3 {
+            color: var(--white);
             font-size: 18px;
-            font-weight: 600;
             margin-bottom: 1rem;
-            font-family: 'Poppins', sans-serif;
         }
 
         .affiliation-box p {
-            font-size: 14px;
+            color: rgba(255, 255, 255, 0.95);
             margin-bottom: 1.5rem;
-            opacity: 0.95;
         }
 
         .btn-affiliation {
             width: 100%;
             padding: 0.875rem;
-            background-color: #fff;
-            color: var(--primary);
+            background-color: var(--white);
+            color: var(--navy);
             border: none;
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
@@ -591,20 +528,21 @@
 
         .btn-affiliation:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
+        /* DASHBOARD */
         .dashboard-header h1 {
             margin-bottom: 0.5rem;
         }
 
         .dashboard-header p {
             font-size: 16px;
-            color: var(--text-secondary);
+            color: var(--text-light);
             margin-bottom: 2rem;
         }
 
-        .services-grid-dashboard {
+        .services-dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
@@ -612,84 +550,67 @@
         }
 
         .service-item {
+            background-color: var(--white);
             padding: 2rem;
-            background-color: var(--bg-primary);
-            border-radius: 14px;
-            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            border: 1px solid var(--gray);
             transition: all 0.3s ease;
         }
 
         .service-item:hover {
-            border-color: var(--primary-light);
+            border-color: var(--navy-light);
             box-shadow: 0 8px 24px rgba(13, 71, 161, 0.12);
             transform: translateY(-4px);
         }
 
         .service-item h3 {
-            font-size: 18px;
-            font-weight: 600;
+            color: var(--navy);
             margin-bottom: 1rem;
-            color: var(--primary);
-            font-family: 'Poppins', sans-serif;
         }
 
         .service-item p {
+            color: var(--text-light);
             font-size: 14px;
-            color: var(--text-secondary);
             margin-bottom: 1.5rem;
             line-height: 1.7;
         }
 
         .btn-service {
             width: 100%;
-            padding: 0.875rem;
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
+            padding: 0.75rem;
+            background-color: var(--gray-light);
+            border: 1px solid var(--gray);
+            border-radius: 6px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
-            color: var(--text-primary);
+            color: var(--text-dark);
             transition: all 0.3s ease;
         }
 
         .btn-service:hover {
-            border-color: var(--primary-light);
-            color: var(--primary);
-            background-color: var(--bg-primary);
+            border-color: var(--navy-light);
+            color: var(--navy);
+            background-color: var(--white);
         }
 
-        .footer-dashboard {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(30, 136, 229, 0.05) 100%);
-            padding: 2.5rem;
-            border-radius: 14px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            box-shadow: 0 4px 16px rgba(30, 136, 229, 0.1);
-        }
-
-        .footer-dashboard p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
+        /* FOOTER */
         footer {
-            background-color: var(--bg-primary);
-            border-top: 1px solid var(--border-color);
-            padding: 2.5rem;
+            background-color: var(--white);
+            border-top: 2px solid var(--gray);
+            padding: 3rem 2rem;
             margin-top: 5rem;
             text-align: center;
-            color: var(--text-secondary);
+            color: var(--text-light);
             font-size: 14px;
         }
 
         footer p {
-            margin-top: 0.75rem;
+            margin-top: 0.5rem;
         }
 
         footer a {
-            color: var(--primary);
+            color: var(--navy);
             text-decoration: none;
             font-weight: 600;
             transition: opacity 0.3s;
@@ -699,61 +620,49 @@
             opacity: 0.8;
         }
 
-        .hidden {
-            display: none !important;
-        }
-
         @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-            }
-
             .hero h1 {
                 font-size: 36px;
             }
 
-            .hero p {
-                font-size: 16px;
+            .nav-links {
+                gap: 1.5rem;
             }
 
-            .hero-buttons {
-                flex-direction: column;
+            .logo-img {
+                height: 70px;
             }
 
-            .hero-buttons button {
-                width: 100%;
-            }
-
-            h1 {
-                font-size: 32px;
+            .navbar-container {
+                padding: 0 1rem;
             }
 
             .container {
-                padding: 2rem 1rem;
+                padding: 0 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- NAVBAR -->
     <nav>
         <div class="navbar-container">
-            <div class="logo" onclick="showPage('home')">
-                <div class="logo" onclick="showPage('home')">
-                    <img src="logo-nuevo-v2.jpg" alt="AMETA Logo" style="height: 70px; width: auto;">
-                </div>
-                <div>AMETA</div>
+            <div class="logo-section" onclick="showPage('home')">
+                <img src="logo-nuevo-v2.jpg" alt="AMETA Logo" class="logo-img">
             </div>
             <div class="nav-links" id="navLinks">
                 <button onclick="showPage('home')">Inicio</button>
                 <button onclick="showPage('about')">Quiénes somos</button>
                 <button onclick="showPage('services')">Servicios</button>
                 <button onclick="showPage('contact')">Contacto</button>
-                <button class="btn-login" onclick="showPage('login')">Acceso</button>
+                <button class="btn-access" onclick="showPage('login')">Acceso</button>
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <!-- MAIN CONTAINER -->
+    <div class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+        <!-- HOME PAGE -->
         <div id="home" class="page active">
             <div class="hero">
                 <h1>Bienvenido a AMETA</h1>
@@ -767,53 +676,49 @@
             <div class="services-grid" id="homeServices"></div>
         </div>
 
+        <!-- ABOUT PAGE -->
         <div id="about" class="page">
             <h1>Quiénes somos</h1>
             <div class="info-box">
-                <p>
-                    La Asociación Mutual de Empleados y Trabajadores de la Aviación (AMETA) es una organización con décadas de trayectoria comprometida con brindar protección integral y beneficios económicos y sociales a los empleados y trabajadores del sector aeronáutico.
-                </p>
-                <p>
-                    Hemos consolidado una red sólida de servicios orientados a mejorar significativamente la calidad de vida de nuestros afiliados y sus familias en cada etapa de su vida.
-                </p>
-                <p>
-                    Nuestra misión es proporcionar herramientas económicas, sociales y de bienestar que acompañen a nuestros asociados, desde subsidios hasta asistencia médica integral, siempre bajo los principios de solidaridad mutua.
-                </p>
-                <p>
-                    Creemos en el poder de la organización colectiva y en la importancia de proteger a quienes construyen el sector aeronáutico argentino.
-                </p>
+                <p>La Asociación Mutual de Empleados y Trabajadores de la Aviación (AMETA) es una organización con décadas de trayectoria comprometida con brindar protección integral y beneficios económicos y sociales a los empleados y trabajadores del sector aeronáutico.</p>
+                <p>Hemos consolidado una red sólida de servicios orientados a mejorar significativamente la calidad de vida de nuestros afiliados y sus familias en cada etapa de su vida.</p>
+                <p>Nuestra misión es proporcionar herramientas económicas, sociales y de bienestar que acompañen a nuestros asociados, desde subsidios hasta asistencia médica integral, siempre bajo los principios de solidaridad mutua.</p>
+                <p>Creemos en el poder de la organización colectiva y en la importancia de proteger a quienes construyen el sector aeronáutico argentino.</p>
             </div>
         </div>
 
+        <!-- SERVICES PAGE -->
         <div id="services" class="page">
             <h1>Nuestros Servicios</h1>
             <div class="grid-3" id="servicesPage"></div>
         </div>
 
+        <!-- CONTACT PAGE -->
         <div id="contact" class="page">
             <h1>Contacto</h1>
             <div class="grid-3">
-                <div class="contact-card">
+                <div class="card">
                     <h3>Ubicación</h3>
                     <p>Venezuela 900<br>CABA, Argentina</p>
                 </div>
-                <div class="contact-card">
+                <div class="card">
                     <h3>Teléfono</h3>
                     <p>(011) 4331-1411</p>
                 </div>
-                <div class="contact-card">
+                <div class="card">
                     <h3>Email</h3>
                     <p>lucia.iaconianni@ospadep.com.ar</p>
                 </div>
             </div>
 
-            <div class="ospadep-box">
+            <div class="special-box">
                 <h3>En conjunto con OSPADEP</h3>
                 <p>AMETA opera en sinergia con OSPADEP, la obra social especializada en empleados públicos y privados del sector aeronáutico, brindando cobertura integral en salud.</p>
-                <a href="https://ospadep.com" target="_blank" class="btn-ospadep">Visitar OSPADEP</a>
+                <a href="https://ospadep.com" target="_blank" class="btn-link">Visitar OSPADEP</a>
             </div>
         </div>
 
+        <!-- LOGIN PAGE -->
         <div id="login" class="page">
             <div class="login-container">
                 <div class="login-box">
@@ -835,7 +740,7 @@
                         <button onclick="toggleSignUp()">Crear una aquí</button>
                     </div>
 
-                    <button class="btn-submit" style="background: var(--bg-secondary); color: var(--text-primary); box-shadow: none; margin-bottom: 0;" onclick="showPage('home')">Volver al inicio</button>
+                    <button class="btn-submit" style="background: var(--gray-light); color: var(--text-dark); box-shadow: none; margin-bottom: 0;" onclick="showPage('home')">Volver al inicio</button>
                 </div>
 
                 <div class="affiliation-box">
@@ -846,21 +751,23 @@
             </div>
         </div>
 
+        <!-- DASHBOARD PAGE -->
         <div id="dashboard" class="page">
             <div class="dashboard-header">
                 <h1>Bienvenido, <span id="userNameDisplay"></span></h1>
                 <p>Panel de control de afiliado</p>
             </div>
 
-            <div class="services-grid-dashboard" id="dashboardServices"></div>
+            <div class="services-dashboard" id="dashboardServices"></div>
 
-            <div class="footer-dashboard">
+            <div class="special-box">
                 <p>¿Necesitás ayuda? Contactanos o visitá nuestra página de OSPADEP</p>
-                <a href="https://ospadep.com" target="_blank" class="btn-ospadep">OSPADEP - Obra Social</a>
+                <a href="https://ospadep.com" target="_blank" class="btn-link">OSPADEP - Obra Social</a>
             </div>
         </div>
     </div>
 
+    <!-- FOOTER -->
     <footer>
         <p>© 2024 AMETA - Asociación Mutual de Empleados y Trabajadores de la Aviación</p>
         <p>Venezuela 900, CABA | (011) 4331-1411 | En conjunto con <a href="https://ospadep.com">OSPADEP</a></p>
@@ -878,7 +785,7 @@
                 id: 'tarjeta',
                 title: 'Tarjeta Mutual de Compras',
                 description: 'Descuentos en comercios afiliados en todo el país.',
-                details: 'Usá tu tarjeta mutual en miles de comercios y disfrutá de descuentos especiales en gastronomía, electrónica, indumentaria, librerías y mucho más.'
+                details: 'Usá tu tarjeta mutual en miles de comercios y disfrutá de descuentos especiales en gastronomía, electrónica, indumentaria y más.'
             },
             {
                 id: 'proveeduria',
@@ -922,7 +829,7 @@
                 <div class="service-card">
                     <h3>${service.title}</h3>
                     <p>${service.details}</p>
-                    <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="showPage('login')">Más Información</button>
+                    <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="showPage('login')">Más Información</button>
                 </div>
             `).join('');
 
@@ -985,4 +892,3 @@
     </script>
 </body>
 </html>
-<!-- Cache bust -->
