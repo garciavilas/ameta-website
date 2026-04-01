@@ -18,6 +18,7 @@
             --primary-dark: #0c3f91;
             --accent: #00bcd4;
             --accent-light: #26c6da;
+            --gold: #ffd700;
             --text-primary: #0f1419;
             --text-secondary: #555;
             --bg-primary: #ffffff;
@@ -153,6 +154,31 @@
         .hero {
             text-align: center;
             margin-bottom: 5rem;
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.05) 0%, rgba(0, 188, 212, 0.05) 100%);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1436262174933-eb643981ffd4?w=600&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -267,6 +293,21 @@
             margin-bottom: 0.75rem;
             color: var(--primary);
             font-family: 'Poppins', sans-serif;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .service-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 1px;
+            opacity: 0.7;
         }
 
         .service-card p {
@@ -689,35 +730,43 @@
     <nav>
         <div class="navbar-container">
             <div class="logo" onclick="showPage('home')">
-                <svg class="logo-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#0d47a1;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#1e88e5;stop-opacity:1" />
-                        </linearGradient>
-                        <linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#00bcd4;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#0097a7;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <!-- Torre de control -->
-                    <rect x="26" y="8" width="8" height="20" fill="url(#logoGrad1)" rx="2"/>
-                    <circle cx="30" cy="10" r="4" fill="url(#logoGrad2)"/>
-                    <!-- Fuselaje del avión -->
-                    <ellipse cx="30" cy="28" rx="12" ry="6" fill="url(#logoGrad1)"/>
-                    <!-- Alas -->
-                    <rect x="8" y="26" width="44" height="4" fill="url(#logoGrad2)" rx="2"/>
-                    <!-- Cola -->
-                    <polygon points="42,28 48,26 48,30" fill="url(#logoGrad1)"/>
-                    <!-- Pista de aterrizaje -->
-                    <rect x="10" y="42" width="40" height="3" fill="url(#logoGrad1)" rx="1"/>
-                    <line x1="15" y1="42" x2="15" y2="45" stroke="url(#logoGrad2)" stroke-width="1"/>
-                    <line x1="22" y1="42" x2="22" y2="45" stroke="url(#logoGrad2)" stroke-width="1"/>
-                    <line x1="30" y1="42" x2="30" y2="45" stroke="url(#logoGrad2)" stroke-width="1"/>
-                    <line x1="38" y1="42" x2="38" y2="45" stroke="url(#logoGrad2)" stroke-width="1"/>
-                    <line x1="45" y1="42" x2="45" y2="45" stroke="url(#logoGrad2)" stroke-width="1"/>
-                    <!-- Línea de horizonte -->
-                    <line x1="5" y1="36" x2="55" y2="36" stroke="url(#logoGrad2)" stroke-width="1" opacity="0.5"/>
+                <svg class="logo-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#0d47a1;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#1e88e5;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#00bcd4;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#0097a7;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="60" cy="60" r="58" fill="none" stroke="url(#grad1)" stroke-width="1" opacity="0.1"/>
+                  <g id="tower">
+                    <rect x="54" y="15" width="12" height="35" rx="6" fill="url(#grad1)"/>
+                    <circle cx="60" cy="12" r="5" fill="url(#grad2)"/>
+                    <circle cx="60" cy="12" r="2" fill="#ffd700" opacity="0.8"/>
+                  </g>
+                  <g id="runway">
+                    <rect x="20" y="75" width="80" height="8" rx="4" fill="url(#grad1)" opacity="0.9"/>
+                    <rect x="28" y="76" width="3" height="6" fill="#ffd700" opacity="0.7"/>
+                    <rect x="45" y="76" width="3" height="6" fill="#ffd700" opacity="0.7"/>
+                    <rect x="60" y="76" width="3" height="6" fill="#ffd700" opacity="0.7"/>
+                    <rect x="75" y="76" width="3" height="6" fill="#ffd700" opacity="0.7"/>
+                    <rect x="92" y="76" width="3" height="6" fill="#ffd700" opacity="0.7"/>
+                  </g>
+                  <g id="airplane">
+                    <ellipse cx="60" cy="48" rx="18" ry="8" fill="url(#grad2)"/>
+                    <circle cx="60" cy="46" r="4" fill="url(#grad1)"/>
+                    <circle cx="60" cy="46" r="2" fill="#ffd700" opacity="0.6"/>
+                    <ellipse cx="60" cy="50" rx="32" ry="5" fill="url(#grad2)" opacity="0.85"/>
+                    <path d="M 28 50 Q 25 48 24 50 Q 25 52 28 50" fill="url(#grad1)"/>
+                    <path d="M 92 50 Q 95 48 96 50 Q 95 52 92 50" fill="url(#grad1)"/>
+                    <path d="M 78 48 L 88 45 L 88 51 Z" fill="url(#grad1)"/>
+                    <circle cx="55" cy="56" r="2.5" fill="#333" opacity="0.6"/>
+                    <circle cx="65" cy="56" r="2.5" fill="#333" opacity="0.6"/>
+                  </g>
+                  <line x1="15" y1="65" x2="105" y2="65" stroke="url(#grad2)" stroke-width="0.5" opacity="0.3"/>
                 </svg>
                 <div>AMETA</div>
             </div>
