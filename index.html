@@ -1138,6 +1138,56 @@
         </div>
     </div>
 
+    <!-- Modal Tarjeta Mutual de Compras -->
+    <div class="modal-overlay" id="modalTarjeta">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModalTarjeta()" title="Cerrar">✕</button>
+
+            <div id="modalTarjetaFormContent">
+                <h2>Tarjeta Mutual de Compras</h2>
+                <p class="modal-subtitle" style="line-height:1.6; color:#555; font-size:0.9rem; margin-bottom:1.5rem;">
+                    La <strong>Tarjeta Mutual de Compras</strong> es el instrumento financiero que te permite adquirir productos en nuestra Proveeduría sin abonar el precio total al momento de la compra. Podés financiar tus compras en cómodas cuotas, descontadas directamente de tu recibo de haberes.
+                </p>
+
+                <label for="tar-nombre">Apellido y nombre *</label>
+                <input type="text" id="tar-nombre" placeholder="Ej: García, Juan Manuel">
+                <span class="field-error" id="tar-err-nombre">Ingresá tu apellido y nombre.</span>
+
+                <label for="tar-cuil">CUIL *</label>
+                <input type="text" id="tar-cuil" placeholder="Ej: 20-12345678-9" maxlength="13">
+                <span class="field-error" id="tar-err-cuil">Ingresá un CUIL válido.</span>
+
+                <label style="margin-top:1.2rem;">Recibo de haberes (con descuento a AMETA) *</label>
+                <div class="upload-box" onclick="document.getElementById('tar-file-recibo').click()">
+                    <input type="file" id="tar-file-recibo" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName('tar-file-recibo','tar-name-recibo')">
+                    <label class="upload-label" for="tar-file-recibo">
+                        <span class="upload-icon">📄</span>
+                        <span>Tocá para adjuntar el archivo</span>
+                        <span style="font-size:0.75rem;color:#aaa;">PDF, JPG o PNG — máx. 10 MB</span>
+                    </label>
+                    <div class="file-name" id="tar-name-recibo"></div>
+                </div>
+                <span class="field-error" id="tar-err-recibo">Adjuntá el recibo de haberes.</span>
+
+                <div class="modal-actions">
+                    <button class="btn-cancel" onclick="closeModalTarjeta()">Cancelar</button>
+                    <button class="btn-enviar" onclick="submitTarjeta()">Enviar solicitud</button>
+                </div>
+            </div>
+
+            <div id="modalTarjetaSuccessContent" style="display:none;">
+                <div class="modal-success">
+                    <div class="success-icon">✅</div>
+                    <h3>¡Solicitud enviada!</h3>
+                    <p>Recibimos tu solicitud de Tarjeta Mutual de Compras.<br>Nos comunicaremos con vos a la brevedad para informarte los próximos pasos.</p>
+                    <div class="modal-actions" style="justify-content:center; margin-top:1.5rem;">
+                        <button class="btn-enviar" onclick="closeModalTarjeta()" style="flex:none; padding: 0.7rem 2rem;">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const services = [
             {
@@ -1195,8 +1245,8 @@
                     <h3>${service.title}</h3>
                     <p>${service.details}</p>
                     <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;"
-                        onclick="${service.id === 'subsidios' ? 'openModalSubsidio()' : "showPage('login')"}">
-                        ${service.id === 'subsidios' ? 'Solicitar subsidio' : 'Más Información'}
+                        onclick="${service.id === 'subsidios' ? 'openModalSubsidio()' : service.id === 'tarjeta' ? 'openModalTarjeta()' : "showPage('login')"}">
+                        ${service.id === 'subsidios' ? 'Solicitar subsidio' : service.id === 'tarjeta' ? 'Solicitar tarjeta de compras' : 'Más Información'}
                     </button>
                 </div>
             `).join('');
@@ -1407,6 +1457,81 @@
             // Por ahora mostramos confirmación
             document.getElementById('modalFormContent').style.display = 'none';
             document.getElementById('modalSuccessContent').style.display = 'block';
+        }
+
+
+        // ── Modal Tarjeta Mutual ──
+        function openModalTarjeta() {
+            document.getElementById('modalTarjeta').classList.add('active');
+            document.getElementById('modalTarjetaFormContent').style.display = 'block';
+            document.getElementById('modalTarjetaSuccessContent').style.display = 'none';
+            resetModalTarjeta();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModalTarjeta() {
+            document.getElementById('modalTarjeta').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('modalTarjeta').addEventListener('click', function(e) {
+            if (e.target === this) closeModalTarjeta();
+        });
+
+        document.getElementById('tar-cuil').addEventListener('input', function() {
+            let val = this.value.replace(/\D/g, '').slice(0, 11);
+            if (val.length > 10) val = val.slice(0,2) + '-' + val.slice(2,10) + '-' + val.slice(10);
+            else if (val.length > 2) val = val.slice(0,2) + '-' + val.slice(2);
+            this.value = val;
+        });
+
+        function resetModalTarjeta() {
+            ['tar-nombre','tar-cuil'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) { el.value = ''; el.classList.remove('invalid'); }
+            });
+            const f = document.getElementById('tar-file-recibo');
+            if (f) { f.value = ''; f.parentElement.style.borderColor = ''; }
+            document.getElementById('tar-name-recibo').textContent = '';
+            ['tar-err-nombre','tar-err-cuil','tar-err-recibo'].forEach(hideError);
+        }
+
+        function submitTarjeta() {
+            let valid = true;
+
+            const nombre = document.getElementById('tar-nombre').value.trim();
+            const cuil = document.getElementById('tar-cuil').value.trim();
+            const recibo = document.getElementById('tar-file-recibo').files[0];
+
+            if (!nombre) {
+                showError('tar-err-nombre');
+                document.getElementById('tar-nombre').classList.add('invalid');
+                valid = false;
+            } else {
+                hideError('tar-err-nombre');
+                document.getElementById('tar-nombre').classList.remove('invalid');
+            }
+
+            if (!validateCUIL(cuil)) {
+                showError('tar-err-cuil');
+                document.getElementById('tar-cuil').classList.add('invalid');
+                valid = false;
+            } else {
+                hideError('tar-err-cuil');
+                document.getElementById('tar-cuil').classList.remove('invalid');
+            }
+
+            if (!recibo) {
+                showError('tar-err-recibo');
+                valid = false;
+            } else {
+                hideError('tar-err-recibo');
+            }
+
+            if (!valid) return;
+
+            document.getElementById('modalTarjetaFormContent').style.display = 'none';
+            document.getElementById('modalTarjetaSuccessContent').style.display = 'block';
         }
 
     </script>
