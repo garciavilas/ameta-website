@@ -748,6 +748,178 @@
                 padding: 0 1rem;
             }
         }
+
+        /* ── Modal de Subsidio ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: #fff;
+            border-radius: 14px;
+            padding: 2rem 2rem 1.5rem;
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: #888;
+            line-height: 1;
+        }
+        .modal-close:hover { color: #333; }
+        .modal h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--navy);
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        .modal .modal-subtitle {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+        }
+        .modal label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 0.3rem;
+            margin-top: 1rem;
+        }
+        .modal label:first-of-type { margin-top: 0; }
+        .modal input,
+        .modal select {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 1.5px solid #dce3ed;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-family: 'Inter', sans-serif;
+            color: #222;
+            background: #f8fafc;
+            transition: border-color 0.2s;
+        }
+        .modal input:focus,
+        .modal select:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            background: #fff;
+        }
+        .upload-box {
+            border: 2px dashed #b0c4de;
+            border-radius: 8px;
+            padding: 0.9rem 1rem;
+            background: #f4f8ff;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            text-align: center;
+        }
+        .upload-box:hover {
+            border-color: var(--primary-light);
+            background: #eaf2ff;
+        }
+        .upload-box input[type="file"] {
+            display: none;
+        }
+        .upload-box .upload-label {
+            font-size: 0.84rem;
+            color: #555;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .upload-box .upload-icon {
+            font-size: 1.6rem;
+        }
+        .upload-box .file-name {
+            font-size: 0.78rem;
+            color: var(--primary-light);
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        .modal-actions .btn-cancel {
+            flex: 1;
+            padding: 0.7rem;
+            border: 1.5px solid #dce3ed;
+            border-radius: 8px;
+            background: #fff;
+            color: #555;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .modal-actions .btn-cancel:hover { background: #f0f2f5; }
+        .modal-actions .btn-enviar {
+            flex: 2;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            transition: background 0.2s;
+        }
+        .modal-actions .btn-enviar:hover { background: var(--primary-dark); }
+        .modal-success {
+            text-align: center;
+            padding: 1.5rem 0 0.5rem;
+        }
+        .modal-success .success-icon {
+            font-size: 3rem;
+            margin-bottom: 0.75rem;
+        }
+        .modal-success h3 {
+            color: var(--navy);
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+        .modal-success p {
+            font-size: 0.88rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        .field-error {
+            font-size: 0.75rem;
+            color: #c0392b;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        .modal input.invalid,
+        .modal select.invalid {
+            border-color: #e74c3c;
+        }
     </style>
 </head>
 <body>
@@ -896,6 +1068,76 @@
         <p>Venezuela 900, CABA | (011) 4331-1411 | Conocé nuestra obra social <button style="background: none; border: none; color: var(--navy); cursor: pointer; font-weight: 600; text-decoration: underline; padding: 0; margin-left: 0.25rem;" onclick="window.open('https://ospadep.com', '_blank')">OSPADEP</button></p>
     </footer>
 
+    <!-- Modal Subsidio por Casamiento y Nacimiento -->
+    <div class="modal-overlay" id="modalSubsidio">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()" title="Cerrar">✕</button>
+
+            <!-- Formulario -->
+            <div id="modalFormContent">
+                <h2>Solicitud de Subsidio</h2>
+                <p class="modal-subtitle">Completá el formulario y adjuntá la documentación requerida.</p>
+
+                <label for="sub-nombre">Apellido y nombre *</label>
+                <input type="text" id="sub-nombre" placeholder="Ej: García, Juan Manuel">
+                <span class="field-error" id="err-nombre">Ingresá tu apellido y nombre.</span>
+
+                <label for="sub-cuil">CUIL *</label>
+                <input type="text" id="sub-cuil" placeholder="Ej: 20-12345678-9" maxlength="13">
+                <span class="field-error" id="err-cuil">Ingresá un CUIL válido.</span>
+
+                <label for="sub-tipo">Tipo de subsidio *</label>
+                <select id="sub-tipo">
+                    <option value="">— Seleccioná una opción —</option>
+                    <option value="casamiento">Subsidio por Casamiento</option>
+                    <option value="nacimiento">Subsidio por Nacimiento</option>
+                </select>
+                <span class="field-error" id="err-tipo">Seleccioná el tipo de subsidio.</span>
+
+                <label style="margin-top:1.2rem;">Último recibo de sueldo (con descuento AMETA) *</label>
+                <div class="upload-box" onclick="document.getElementById('file-recibo').click()">
+                    <input type="file" id="file-recibo" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName('file-recibo','name-recibo')">
+                    <label class="upload-label" for="file-recibo">
+                        <span class="upload-icon">📄</span>
+                        <span>Tocá para adjuntar el archivo</span>
+                        <span style="font-size:0.75rem;color:#aaa;">PDF, JPG o PNG — máx. 10 MB</span>
+                    </label>
+                    <div class="file-name" id="name-recibo"></div>
+                </div>
+                <span class="field-error" id="err-recibo">Adjuntá el recibo de sueldo.</span>
+
+                <label style="margin-top:1rem;" id="label-cert">Certificado de casamiento o nacimiento *</label>
+                <div class="upload-box" onclick="document.getElementById('file-cert').click()">
+                    <input type="file" id="file-cert" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName('file-cert','name-cert')">
+                    <label class="upload-label" for="file-cert">
+                        <span class="upload-icon">📋</span>
+                        <span>Tocá para adjuntar el archivo</span>
+                        <span style="font-size:0.75rem;color:#aaa;">PDF, JPG o PNG — máx. 10 MB</span>
+                    </label>
+                    <div class="file-name" id="name-cert"></div>
+                </div>
+                <span class="field-error" id="err-cert">Adjuntá el certificado correspondiente.</span>
+
+                <div class="modal-actions">
+                    <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                    <button class="btn-enviar" onclick="submitSubsidio()">Enviar solicitud</button>
+                </div>
+            </div>
+
+            <!-- Confirmación -->
+            <div id="modalSuccessContent" style="display:none;">
+                <div class="modal-success">
+                    <div class="success-icon">✅</div>
+                    <h3>¡Solicitud enviada!</h3>
+                    <p>Recibimos tu solicitud correctamente.<br>Nos comunicaremos con vos a la brevedad para informarte el estado del trámite.</p>
+                    <div class="modal-actions" style="justify-content:center; margin-top:1.5rem;">
+                        <button class="btn-enviar" onclick="closeModal()" style="flex:none; padding: 0.7rem 2rem;">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const services = [
             {
@@ -952,7 +1194,10 @@
                 <div class="service-card">
                     <h3>${service.title}</h3>
                     <p>${service.details}</p>
-                    <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="showPage('login')">Más Información</button>
+                    <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;"
+                        onclick="${service.id === 'subsidios' ? 'openModalSubsidio()' : "showPage('login')"}">
+                        ${service.id === 'subsidios' ? 'Solicitar subsidio' : 'Más Información'}
+                    </button>
                 </div>
             `).join('');
 
@@ -1019,6 +1264,151 @@
         }
 
         renderServices();
+
+        // ── Modal Subsidio ──
+        function openModalSubsidio() {
+            document.getElementById('modalSubsidio').classList.add('active');
+            document.getElementById('modalFormContent').style.display = 'block';
+            document.getElementById('modalSuccessContent').style.display = 'none';
+            resetModalForm();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalSubsidio').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Cerrar al clickear el overlay (fuera del modal)
+        document.getElementById('modalSubsidio').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        function showFileName(inputId, displayId) {
+            const input = document.getElementById(inputId);
+            const display = document.getElementById(displayId);
+            if (input.files && input.files[0]) {
+                display.textContent = '✓ ' + input.files[0].name;
+                // Limpiar error si había
+                const errMap = { 'file-recibo': 'err-recibo', 'file-cert': 'err-cert' };
+                hideError(errMap[inputId]);
+                document.getElementById(inputId).parentElement.style.borderColor = '#4caf50';
+            }
+        }
+
+        function showError(id) {
+            const el = document.getElementById(id);
+            if (el) el.style.display = 'block';
+        }
+        function hideError(id) {
+            const el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+        }
+
+        function resetModalForm() {
+            ['sub-nombre','sub-cuil','sub-tipo'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) { el.value = ''; el.classList.remove('invalid'); }
+            });
+            ['file-recibo','file-cert'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.value = '';
+                    el.parentElement.style.borderColor = '';
+                }
+            });
+            ['name-recibo','name-cert'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = '';
+            });
+            ['err-nombre','err-cuil','err-tipo','err-recibo','err-cert'].forEach(hideError);
+        }
+
+        // Formateo automático de CUIL mientras escribe
+        document.getElementById('sub-cuil').addEventListener('input', function() {
+            let val = this.value.replace(/\D/g, '').slice(0, 11);
+            if (val.length > 10) val = val.slice(0,2) + '-' + val.slice(2,10) + '-' + val.slice(10);
+            else if (val.length > 2) val = val.slice(0,2) + '-' + val.slice(2);
+            this.value = val;
+        });
+
+        // Actualizar label del certificado según tipo de subsidio
+        document.getElementById('sub-tipo').addEventListener('change', function() {
+            const label = document.getElementById('label-cert');
+            if (this.value === 'casamiento') {
+                label.textContent = 'Acta o certificado de matrimonio *';
+            } else if (this.value === 'nacimiento') {
+                label.textContent = 'Acta o certificado de nacimiento *';
+            } else {
+                label.textContent = 'Certificado de casamiento o nacimiento *';
+            }
+            hideError('err-tipo');
+            document.getElementById('sub-tipo').classList.remove('invalid');
+        });
+
+        function validateCUIL(cuil) {
+            // Acepta formato XX-XXXXXXXX-X o 11 dígitos seguidos
+            return /^\d{2}-\d{8}-\d$/.test(cuil) || /^\d{11}$/.test(cuil.replace(/-/g,''));
+        }
+
+        function submitSubsidio() {
+            let valid = true;
+
+            const nombre = document.getElementById('sub-nombre').value.trim();
+            const cuil = document.getElementById('sub-cuil').value.trim();
+            const tipo = document.getElementById('sub-tipo').value;
+            const recibo = document.getElementById('file-recibo').files[0];
+            const cert = document.getElementById('file-cert').files[0];
+
+            if (!nombre) {
+                showError('err-nombre');
+                document.getElementById('sub-nombre').classList.add('invalid');
+                valid = false;
+            } else {
+                hideError('err-nombre');
+                document.getElementById('sub-nombre').classList.remove('invalid');
+            }
+
+            if (!validateCUIL(cuil)) {
+                showError('err-cuil');
+                document.getElementById('sub-cuil').classList.add('invalid');
+                valid = false;
+            } else {
+                hideError('err-cuil');
+                document.getElementById('sub-cuil').classList.remove('invalid');
+            }
+
+            if (!tipo) {
+                showError('err-tipo');
+                document.getElementById('sub-tipo').classList.add('invalid');
+                valid = false;
+            } else {
+                hideError('err-tipo');
+                document.getElementById('sub-tipo').classList.remove('invalid');
+            }
+
+            if (!recibo) {
+                showError('err-recibo');
+                valid = false;
+            } else {
+                hideError('err-recibo');
+            }
+
+            if (!cert) {
+                showError('err-cert');
+                valid = false;
+            } else {
+                hideError('err-cert');
+            }
+
+            if (!valid) return;
+
+            // Acá en el futuro va el envío real (fetch/FormData a backend)
+            // Por ahora mostramos confirmación
+            document.getElementById('modalFormContent').style.display = 'none';
+            document.getElementById('modalSuccessContent').style.display = 'block';
+        }
+
     </script>
 </body>
 </html>
