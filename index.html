@@ -966,6 +966,9 @@
                     <button class="btn-primary" onclick="showPage('services')">Explorar Servicios</button>
                     <button class="btn-secondary" onclick="showPage('login')">Acceso de Afiliados</button>
                 </div>
+                <p style="font-size:16px;color:var(--text-light);max-width:680px;margin:0 auto 2.5rem;line-height:1.75;">
+                    AMETA es una asociación mutual con décadas de trayectoria al servicio de los empleados y trabajadores del sector aeronáutico argentino. Brindamos protección integral, beneficios económicos y sociales, y una red de servicios orientada a mejorar la calidad de vida de nuestros afiliados y sus familias, bajo los principios de solidaridad y organización colectiva.
+                </p>
             </div>
 
             <div class="services-grid" id="homeServices"></div>
@@ -1316,7 +1319,7 @@
 
         function renderServices() {
             const homeServicesHtml = services.map(service => `
-                <div class="service-card">
+                <div class="service-card" style="cursor:pointer;" onclick="${service.id === 'subsidios' ? 'openModalSubsidio()' : service.id === 'tarjeta' ? "showPage('tarjeta-info')" : service.id === 'proveeduria' ? "showPage('proveeduria-info')" : "showPage('services')"}">
                     <h3>${service.title}</h3>
                     <p>${service.description}</p>
                 </div>
